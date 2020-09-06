@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<title>StartPage Basic</title>
+<meta charset="utf-8">
+<link rel="icon" type="image/png" href="data/res/favicon.png" />
+<meta name="author" content="Manuel Serrano Martínez">
+<meta name="description" content="StartPage Basic.">
+<meta name="version" content="4.2">
+<meta content="width=device-width, user-scalable=no" name="viewport" />
+<script src="data/comp/script.js"></script>
+<script src="data/comp/restore.js"></script>
+<script src="data/comp/documentation.txt"></script>
+<link href="data/comp/style.css" rel="stylesheet" type="text/css" />
+<link href="data/comp/portrait.css" rel="stylesheet" type="text/css" />
+<link href="data/comp/landscape.css" rel="stylesheet" type="text/css" />
+<link href="data/comp/anim.css" rel="stylesheet" type="text/css" />
+<script>
+function disableselect(e){
+return false
+}
+
+function reEnable(){
+return true
+}
+
+document.onselectstart=new Function ("return false")
+document.oncontextmenu=new Function ("return false")
+
+if (window.sidebar){
+document.onmousedown=disableselect
+document.onclick=reEnable
+}
+</script>
+
+</head>
+
+<body onLoad="loadSetts(); loadClock()" onKeyDown="tecla(event)">
+
+<section class="scpart" id="particles-js"></section>
+
+<div class="startup" id="startup">
+	<p class="lg-sp" id="lg-sp">Bienvenido(a) a StartPage</p>
+	<p class="tx-we" id="tx-we">StartPage es una aplicación web multiplataforma que reemplaza la página por defecto 
+		de tu navegador para mejorar la experiencia y personalización al momento de navegar por la web.</p>
+	<center>
+		<button class="bt-we" id="bt-we" onClick="startCounter()">INICIAR</button>
+	</center>
+</div>
+
+<div class="content" id="content">
+	<p class="ic-menu" id="ic-menu" onClick="showMenu()"></p>
+	<script>
+		if(navigator.onLine){
+			document.writeln('<p class="ic-sigon" id="signal" title="Acceso a internet"></p>');
+		}
+		else{
+			document.writeln('<p class="ic-sigoff" id="signal" title="Sin acceso a internet"></p>')
+		}
+	</script>
+	<p class="clock" id="clock"></p>
+	<p class="tx-info" id="tx-info">Bienvenido(a)</p>
+	<center>
+		<br><br><br><br><br><br>
+		<div class="dv-vendor" id="dv-vendor" onmouseover="openProve()" onmouseout="closeProve()">
+			<div class="v-mapa" id="v-mapa">
+				<img src="data/res/lg_1.png" class="ic-vendor" id="ic-vend1" onClick="setGoogle()">
+				<img src="data/res/lg_2.png" class="ic-vendor" id="ic-vend2" onClick="setBing()">
+				<img src="data/res/lg_3.png" class="ic-vendor" id="ic-vend3" onClick="setDuck()">
+				<img src="data/res/lg_4.png" class="ic-vendor" id="ic-vend4" onClick="setYoutube()">
+			</div>
+		</div>
+	</center>
+	<input type="text" value="" class="bar-search" id="bar-search" placeholder="Buscar" autocomplete="off" spellcheck="false" data-ii="g" data-vendor="https://www.google.com/search?q=" onChange="activeBar()">
+	<div class="apps" id="apps">
+		<center>
+			<p class="ic-app" id="app-0" title="Aplicaciones [Tecla de acceso: A]" accesskey="a" onClick="showApps()"></p>
+			<p class="ic-app" id="app-1" title="Gmail [Tecla de acceso: G]" onClick="enlaceApp(this)" accesskey="g" data-url="https://www.gmail.com"></p>
+			<p class="ic-app" id="app-2" title="WhatsApp [Tecla de acceso: W]" onClick="enlaceApp(this)" accesskey="w" data-url="https://web.whatsapp.com"></p>
+			<p class="ic-app" id="app-3" title="Facebook [Tecla de acceso: B]" onClick="enlaceApp(this)" accesskey="b" data-url="https://facebook.com"></p>
+			<p class="ic-app" id="app-4" title="YouTube [Tecla de acceso: Y]" onClick="enlaceApp(this)" accesskey="y" data-url="https://youtube.com"></p>
+			<p class="ic-app" id="app-5" title="Spotify [Tecla de acceso: S]" onClick="enlaceApp(this)" accesskey="s" data-url="http://spotify.com"></p>
+		</center>
+	</div>
+</div>
+
+<div class="menu" id="menu">
+	<div class="sc-user" id="sc-user">
+		<img src="data/res/im-user.png" class="im-user" id="im-user" onClick="selProfile()" onError="errorProfile()"><input type="text" value="" name="user" class="fr-name" id="fr-name" onChange="changeName()">
+	</div>
+	<div class="pa-mn" id="pa-mn">
+		<div class="m-section" id="sc-index">
+			<p class="opt-mn" id="opt-1" accesskey="1" onClick="refresh()"></p>
+			<p class="opt-mn" id="opt-2" accesskey="2" onClick="openVendor()"></p>
+			<p class="opt-mn" id="opt-3" accesskey="3" onClick="openCustom()"></p>
+			<p class="opt-mn" id="opt-4" accesskey="4" onClick="openHistory()"></p>
+			<p class="opt-mn" id="opt-5" accesskey="5" onClick="openSetts()"></p>
+			<p class="opt-mn" id="opt-6" accesskey="6" onClick="openShare()"></p>
+			<p class="opt-mn" id="opt-7" accesskey="7" onClick="openHelp()"></p>
+			<p class="opt-mn" id="opt-8" accesskey="8" onClick="openInfo()"></p>
+		</div>
+		<div class="m-section" id="sc-vendor">
+			<p class="tt-mn" id="tt-2"></p>
+			<p class="tx-small">Cambia el proveedor de búsqueda predeterminado.</p>
+			<select class="op-li" id="op-ve" onChange="changeProv()">
+				<option value="g" class="el-li">Google</option>
+				<option value="b" class="el-li">Bing</option>
+				<option value="d" class="el-li">DuckDuckGo</option>
+				<option value="y" class="el-li">YouTube</option>
+			</select>
+			<br>
+		</div>
+		<div class="m-section" id="sc-custom">
+			<p class="tt-mn" id="tt-3"></p>
+			<p class="tx-small">Personaliza StartPage con colores, imágenes y temas.</p>
+			<p class="tx-normal">•Modo de color:</p>
+			<select class="op-li" id="li-mode" onChange="changeMode()">
+				<option value="light" class="el-li">Claro</option>
+				<option value="dark" class="el-li">Oscuro</option>
+			</select>
+			<p class="tx-normal">•Fondo de pantalla:</p>
+			<select class="op-li" id="li-bg" onChange="changeBg()">
+				<option value="auto" class="el-li">Automático</option>
+				<option value="manual" class="el-li">Personzalizado</option>
+			</select><br>
+			<p class="tx-peq" id="text-bauto">Selecciona un archivo o agrega la URL de una imagen</p>
+			<button class="op-li" id="ftl" onClick="selImagebg()">Seleccionar archivo</button><br>
+			<input type="text" class="op-tx" id="op-tx" value="" placeholder="URL de imagen" onChange="setWallpaper()">
+			<p class="tx-normal">•Color de énfasis:</p>
+			<p class="tx-peq" id="text-cauto">Primario</p>
+			<input type="color" value="" class="op-li" id="col-1" onChange="changeColor()">
+			<p class="tx-peq" id="text-col">Secundario</p>
+			<input type="color" value="" class="op-li" id="col-2" onChange="changeColor()">
+			<p class="tx-normal">•Tamaño de imagen:</p>
+			<select class="op-li" id="li-sz" onChange="changeSize()">
+				<option value="auto" class="el-li">Automático</option>
+				<option value="cover" class="el-li">Ajuste a pantalla</option>
+				<option value="initial" class="el-li">Tamaño real</option>
+			</select><br>
+			<p class="tx-normal">•Complementos:</p>
+			<button class="op-li" onClick="openAcrilic()">Diseño acrílico</button><br>
+			<button class="op-li" onClick="openParticles()">Partículas</button>
+			<br>
+		</div>
+		<div class="m-section" id="sc-acrilic">
+			<p class="tt-mn" id="tt-12"></p>
+			<p class="tx-peq">Versión: 2.0.0<br>Desarrollador: MSM Apps</p>
+			<p class="tx-peq">Este modo de diseño cambia el aspecto del acento de color mediante efectos de transparencia y desenfoque.<br>
+			El color se mide en formato RGB, por lo que el primer valor pertenece al color rojo, el segundo al verde y el tercero al azul.</p>
+			<p class="tx-peq" style="text-align: center;">Rojo</p>
+			<input type="range" class="ra-zo" id="ra-co1" min="0" max="255" value="125" step="1" onChange="chAcrilVis()"><br><br>
+			<p class="tx-peq" style="text-align: center;">Verde</p>
+			<input type="range" class="ra-zo" id="ra-co2" min="0" max="255" value="125" step="1" onChange="chAcrilVis()"><br><br>
+			<p class="tx-peq" style="text-align: center;">Azul</p>
+			<input type="range" class="ra-zo" id="ra-co3" min="0" max="255" value="125" step="1" onChange="chAcrilVis()"><br><br><br>
+			<div id="vis-col" class="vis-col"><center>VISTA PREVIA</center></div>
+			<center><button class="op-li" onClick="applyAcril()">Aplicar cambios</button></center>
+			<br>
+		</div>
+		<div class="m-section" id="sc-particles">
+			<p class="tt-mn" id="tt-13"></p>
+			<p class="tx-peq">Versión: 1.0.3<br>Desarrollador: Vincent Garreau<br>Licencia MIT: http://opensource.org/licenses/MIT</p>
+			<a href="https://github.com/VincentGarreau/particles.js" target="_blank" class="linkext">Github</a><br><br>
+			<p class="tx-peq">Este complemento contiene un script que agrega un fondo animado a la pantalla de StartPage Basic.</p>
+			<select class="op-li" id="li-part" onChange="chParticles()">
+				<option value="0" class="el-li">Desactivado</option>
+				<option value="1" class="el-li">Activado</option>
+			</select>
+			<br>
+		</div>
+		<div class="m-section" id="sc-history">
+			<p class="tt-mn" id="tt-4"></p>
+			<p class="tx-peq" id="tx-history"></p>
+			<p class="tx-peq" id="history"></p>
+			<br>
+		</div>
+		<div class="m-section" id="sc-setts">
+			<p class="tt-mn" id="tt-5"></p>
+			<p class="tx-small">Configura StartPage.</p>
+			<p class="tx-normal">•Información personal:</p>
+			<p class="tx-peq">Nombre de usuario:<p>
+			<input type="text" class="op-tx" id="op-name" value="" name="user" placeholder="Nombre de usuario" onChange="changeName2()"><br>
+			<p class="tx-peq">Correo electrónico:<p>
+			<input type="text" class="op-tx" id="op-email" value="" name="email" placeholder="Correo electrónico" onChange="changeEmail()"><br>
+			<p class="tx-normal">•Región e idioma:</p>
+			<select class="op-li" id="li-zone">
+				<option value="es-mx" class="el-li">México (Español)</option>
+			</select>
+			<p class="tx-normal">•Accesibilidad:</p>
+			<p class="tx-peq">Tamaño de los elementos:<p>
+			<select class="op-li" id="li-zoom" onChange="changeZoom()">
+				<option value="0.9" class="el-li">Pequeño</option>
+				<option value="1" class="el-li">Normal</option>
+				<option value="1.1" class="el-li">Grande</option>
+			</select>
+			<p class="tx-normal">•Historial de navegación:</p>
+			<p class="tx-peq" id="text-ht">StartPage guarda tu historial de búsqueda en el dispositivo.<p>
+			<button class="op-li" id="bt-history" onClick="delHistory()">Borrar historial</button>
+			<p class="tx-normal">•Copia de seguridad:</p>
+			<p class="tx-peq">Puedes crear o restaurar una copia de seguridad local de tu configuración de StartPage. 
+			Esta puede contener información personal como tu nombre y correo electrónico.</p>
+			<button class="op-li" onClick="writeData()">Crear copia local</button><br>
+			<button class="op-li" onClick="selCopy()">Restaurar configuración</button>
+			<p class="tx-normal">•Restablecer:</p>
+			<p class="tx-peq">Si StartPage no funciona correctamente, puedes restablecer a la configuración inicial, 
+		    esta acción borra todos tus registros y configuración actual.</p>
+			<button class="op-li" id="bt-reset" onClick="resetAll()">Restablecer</button>
+			<br>
+		</div>
+		<div class="m-section" id="sc-share">
+			<p class="tt-mn" id="tt-6"></p>
+			<p class="tx-small">Comparte StartPage con un amigo.</p>
+			<img src="data/res/qr.png" class="im-qr" id="im-qr">
+			<br>
+		</div>
+		<div class="m-section" id="sc-help">
+			<p class="tt-mn" id="tt-7"></p>
+			<p class="tx-small">¿No sabes qué hacer?</p>
+			<p class="tx-peq">•Configurar el navegador:</p>
+			<p class="tx-peq">Copia la URL de la barra de búsqueda del navegador y pégala en configuración de página de inicio.</p>
+			<p class="tx-peq">•Realizar una búsqueda:</p>
+			<p class="tx-peq">Al abrir StartPage, la barra de búsqueda quedará enfocada, por lo que ya sólo tendrás que escribir.<br>
+				Para borrar los datos, puedes oprimir la tecla <b>flecha abajo</b> del teclado.</p>
+			<p class="tx-peq">•Cambiar el proveedor de búsqueda:</p>
+			<p class="tx-peq">Pasa el cursor del ratón en el logo del proveedor de búsqueda, se desplegará un menú de lista donde puedes seleccionar otro proveedor como Google, Bing, YouTube y DuckDuckGo.</p>
+			<p class="tx-peq">•Personalizar:</p>
+			<p class="tx-peq">Abre el menú desde la parte superior izquierda de la pantalla, o también puedes oprimir la tecla <b>flecha arriba</b> del teclado.<br>
+				Después, selecciona <b>Personalización</b> y cambia el fondo de pantalla, colores y modo de luz.<br>
+			    El fondo de pantalla automático configura una imagen diaria de StartPage, puedes utilizar tu foto favorita como fondo de StartPage, para ello, necesitarás 
+			    la URL de la imagen en el dispositivo o en la web.</p>
+			<p class="tx-peq">•Cambiar información personal:</p>
+			<p class="tx-peq">Abre el menú desde la parte superior izquierda de la pantalla, o también puedes oprimir la tecla <b>flecha arriba</b> del teclado.<br>
+				Después, selecciona <b>Configuración</b> y cambia el nombre de usuario y correo electrónico. También puedes cambiar el nombre de usuario desde la 
+			    parte superior del menú.</p>
+			<p class="tx-peq">•Administrar historial de búsqueda:</p>
+			<p class="tx-peq">Para ver el historial, abre el menú y selecciona <b>Historial</b>.<br>
+				Para borrar el historial, ve a <b>Configuración</b> y selecciona <b>Borrar historial</b>.</p>
+			<p class="tx-peq">•Mejorar accesibilidad:</p>
+			<p class="tx-peq">Abre la configuración de StartPage, y en <b>Accesibilidad</b> cambia el tamaño de los elementos de la pantalla.</p>
+			<p class="tx-peq">•Compartir StartPage:</p>
+			<p class="tx-peq">Abre el menú y selecciona <b>Compartir</b>, se generará un código QR que te envía al enlace de StartPage en GitHub.</p>
+			<p class="tx-peq">•Restablecer configuración:</p>
+			<p class="tx-peq">Abre la configuración de StartPage, y selecciona <b>Restablecer</b> para volver a la configuración inicial.<br>
+			Esta acción borra datos personales, configuración e historial de búsqueda.</p>
+			<p class="tx-peq">•Comandos:</p>
+			<p class="tx-peq">Para ejecutar un comando, escríbelo en la barra de búsqueda y presiona "ENTER".<br>
+			La lista de comandos disponibles son: info, ayuda, historial, borrar historial, restablecer, personalizar, configurar, edge-surf, pacman, snake, t-rex.</p>
+			<br>
+		</div>
+		<div class="m-section" id="sc-info">
+			<p class="tt-mn" id="tt-8"></p>
+			<center>
+				<img src="data/res/icon.png" class="iconapp">
+			</center>
+			<p class="tx-small"><b>StartPage</b> es una aplicación web multiplataforma que reemplaza la página 
+			por defecto de tu navegador para mejorar la experiencia y personalización al momento de 
+			navegar por la web.</p>
+			<p class="tx-normal">•General</p>
+			<p class="tx-peq">StartPage Basic<br>v4.2<br>MSM Apps<br>Región: ES-MX<br>Fecha: 10-Jun-2020</p>
+			<p class="tx-normal">•Características:</p>
+			<p class="tx-peq">Esta edición de StartPage funciona con el formato web HTML5, reduciendo 
+			el uso de memoria RAM, pero con el mismo nivel de personalización. Está programada para 
+			funcionar con dispositivos de pocos recursos de hardware, acelerando la navegación.<br>
+		    Para obtener todas las funciones de StartPage, instala la versión completa.</p>
+			<p class="tx-normal">•Novedades:</p>
+			<p class="tx-peq">Versión 4.2<br>
+				1. Ahora puedes crear y restaurar copias de seguridad de tu configuración.<br>
+			    2. Mejoras en accesibilidad.<br>
+			    3. Se agregó un nuevo juego basado en JavaScript.<br>
+			    4. Se corrigieron problemas en el script.</p>
+			<p class="tx-peq">Versión 4.1<br>
+				1. Ahora puedes hacer búsquedas fácilmente desde tu historial.<br>
+			    2. Después de hacer una búsqueda, automáticamente se elimina para evitar conflictos con futuras búsquedas.</p>
+			<p class="tx-peq">Presentamos la nueva versión 4.0 de StartPage Basic con nuevas caracterísitcas y mejoras.<br>
+				1. Nuevo código escrito desde cero.<br>
+			    2. Ahora puedes personalizar StartPage con tu imagen y colores favoritos.<br>
+			    3. Obtén un mejor rendimiento cuando vayas a navegar.<br>
+			    4. Ahora StartPage guarda tu historial de búsquedas en el dispositivo.<br>
+			    5. Guarda tu información personal como nombre de usuario y correo electrónico para iniciar sesión 
+			    en sitios web más rápido, todos tus datos están protegidos.<br>
+			    6. Ahora puedes compartir StartPage con un amigo.<br>
+			    7. Se agregaron tres juegos basados en JavaScript.<br>
+			    8. Nueva aplicación de ayuda.</p>
+			<p class="tx-normal">•Requisitos mínimos de hardware:</p>
+			<p class="tx-peq">1. Navegador HTML5.<br>
+				2. Espacio en disco de 10MB.<br>
+				3. Memoria RAM de 250MB.<br>
+				4. Acceso a internet.<br>
+				5. Compatibilidad con almacenamiento local.</p>
+			<p class="tx-normal">•Complementos:</p>
+			<button class="op-li" onClick="openComp4()" title="Web: https://github.com/jackbuehner/MicrosoftEdge-S.U.R.F.">Edge SURF</button><br>
+			<p class="tx-peq">Desarrollador: Jackbuehner</p>
+			<button class="op-li" onClick="openComp1()" title="Web: https://github.com/luciopanepinto/pacman">Pacman</button><br>
+			<p class="tx-peq">Desarrollador: Lucio Panepinto</p>
+			<button class="op-li" onClick="openComp2()" title="Web: https://github.com/patorjk/JavaScript-Snake">Snake</button><br>
+			<p class="tx-peq">Desarrollador: Patorjk</p>
+			<button class="op-li" onClick="openComp3()" title="Web: https://github.com/wayou/t-rex-runner">T-Rex</button><br>
+			<p class="tx-peq">Desarrollador: Wayou Liu</p>
+			<p class="tx-normal">•Documentación:</p>
+			<button class="op-li" id="bt-license" onClick="openLicense()">Licencia</button>
+			<button class="op-li" id="bt-terms" onClick="openTerms()">Términos y condiciones</button>
+			<button class="op-li" id="bt-privacy" onClick="openPrivacy()">Política de privacidad</button>
+			<p class="tx-normal">•Soporte:</p>
+			<p class="tx-peq">Las actualizaciones están activas.</p>
+			<input type="text" style="display: none; visibility: hidden;" value="0px" id="vsensor">
+			<input id="inputProfile" type="file" onchange="loadProfile();" class="op-li">
+			<input id="inputFileToLoad" type="file" onchange="loadImageFileAsURL();" class="op-li">
+			<input id="inputssc" type="file" onchange="loadssc();" class="op-li">
+			<br>
+		</div>
+		<div class="m-section" id="sc-license">
+			<p class="tt-mn" id="tt-9"></p>
+			<p class="tx-small" id="t-license"></p>
+			<br>
+		</div>
+		<div class="m-section" id="sc-terms">
+			<p class="tt-mn" id="tt-10"></p>
+			<p class="tx-small" id="t-terms"></p>
+			<br>
+		</div>
+		<div class="m-section" id="sc-privacy">
+			<p class="tt-mn" id="tt-11"></p>
+			<p class="tx-small" id="t-privacy"></p>
+			<br>
+		</div>
+	</div>
+	<div class="sc-controls" id="sc-controls">
+		<p class="tx-mn" id="tx-mn">StartPage Basic v4.2</p><img src="data/res/ic-back.png" class="ic-back" id="ic-back" accesskey="z" onClick="retro()" title="Atrás [Tecla de acceso: Z]">
+	</div>
+</div>
+
+<div class="mapps" id="mapps">
+	<center>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://www.amazon.com.mx"><img src="data/res/ic-apps/amazon.png" class="imxapp"><p class="nxapp">Amazon</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://calendar.google.com"><img src="data/res/ic-apps/calendar.png" class="imxapp"><p class="nxapp">Calendario</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://contacts.google.com"><img src="data/res/ic-apps/contacts.png" class="imxapp"><p class="nxapp">Contactos</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://www.google.com/intl/es_mx/docs/about"><img src="data/res/ic-apps/gdocs.png" class="imxapp"><p class="nxapp">Documentos</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://www.google.com.mx/intl/es-419/drive"><img src="data/res/ic-apps/drive.png" class="imxapp"><p class="nxapp">Drive</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://facebook.com"><img src="data/res/ic-apps/facebook.png" class="imxapp"><p class="nxapp">Facebook</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://photos.google.com"><img src="data/res/ic-apps/gphotos.png" class="imxapp"><p class="nxapp">Fotos de Google</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://www.gmail.com"><img src="data/res/ic-apps/gmail.png" class="imxapp"><p class="nxapp">Gmail</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="http://maps.google.com"><img src="data/res/ic-apps/maps.png" class="imxapp"><p class="nxapp">Google Maps</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://www.google.com/intl/es_mx/sheets/about"><img src="data/res/ic-apps/gcalc.png" class="imxapp"><p class="nxapp">Hojas de cálculo</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://instagram.com"><img src="data/res/ic-apps/instagram.png" class="imxapp"><p class="nxapp">Instagram</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://www.messenger.com"><img src="data/res/ic-apps/messenger.png" class="imxapp"><p class="nxapp">Messenger</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://www.office.com"><img src="data/res/ic-apps/office.png" class="imxapp"><p class="nxapp">Office Online</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://onedrive.live.com/about/es-es"><img src="data/res/ic-apps/one.png" class="imxapp"><p class="nxapp">OneDrive</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="http://outlook.com"><img src="data/res/ic-apps/outlook.png" class="imxapp"><p class="nxapp">Outlook</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://www.google.com/intl/es_mx/slides/about"><img src="data/res/ic-apps/gslides.png" class="imxapp"><p class="nxapp">Presentaciones</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="http://spotify.com"><img src="data/res/ic-apps/spotify.png" class="imxapp"><p class="nxapp">Spotify</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="http://translate.google.com.mx"><img src="data/res/ic-apps/traductor.png" class="imxapp"><p class="nxapp">Traductor</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://twitter.com"><img src="data/res/ic-apps/twitter.png" class="imxapp"><p class="nxapp">Twitter</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://web.whatsapp.com"><img src="data/res/ic-apps/whatsapp.png" class="imxapp"><p class="nxapp">WhatsApp</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="http://yahoo.com.mx"><img src="data/res/ic-apps/yahoo.png" class="imxapp"><p class="nxapp">Yahoo</p></div>
+		<div class="xiapp" onClick="enlaceApp(this)" data-url="https://youtube.com"><img src="data/res/ic-apps/youtube.png" class="imxapp"><p class="nxapp">YouTube</p></div>
+	</center>
+</div>
+
+<div class="fade" id="fade" onClick="hideMenu()"></div>
+
+<script>
+	function loadImageFileAsURL(){
+		var filesSelected = document.getElementById("inputFileToLoad").files;
+		if(filesSelected.length > 0){
+			var fileToLoad = filesSelected[0];
+			var fileReader = new FileReader();
+			fileReader.onload = function(fileLoadedEvent){
+				var wsize = localStorage.spbwsize;
+				var img64 = fileLoadedEvent.target.result;
+				document.body.style.background = "url(" +img64 +") no-repeat";
+				document.body.style.backgroundSize = wsize;
+				localStorage.spbwall = img64;
+			}
+			;
+			fileReader.readAsDataURL(fileToLoad);
+		}
+}
+</script>
+
+<script>
+	function loadProfile(){
+		var filesSelected = document.getElementById("inputProfile").files;
+		if(filesSelected.length > 0){
+			var fileToLoad = filesSelected[0];
+			var fileReader = new FileReader();
+			fileReader.onload = function(fileLoadedEvent){
+				var profile64 = fileLoadedEvent.target.result;
+				document.getElementById("im-user").src = profile64;
+				localStorage.spbprofile = profile64;
+			}
+			;
+			fileReader.readAsDataURL(fileToLoad);
+		}
+	}
+</script>
+
+<script>
+	function loadssc(){
+		var filesSelected = document.getElementById("inputssc").files;
+		if(filesSelected.length > 0){
+			var fileToLoad = filesSelected[0];
+			var fileReader = new FileReader();
+			fileReader.onload = function(fileLoadedEvent){
+				var datoscript = fileLoadedEvent.target.result;
+				
+				var newsc = document.createElement("script");
+				newsc.setAttribute("id","sclector");
+				document.body.appendChild(newsc);
+				document.getElementById("sclector").innerHTML = datoscript;
+				var fxsensor = "spb-4x";
+				if(fxsensor == bz){
+					importcs();
+					alert("¡Se restauró la copia de segudidad!");
+					window.location.reload();
+				}
+				else{
+					alert("¡Archivo no válido o copia de seguridad incompatible!");
+				}
+
+			}
+			;
+			fileReader.readAsText(fileToLoad);
+		}
+	}
+</script>
+
+<script src="data/comp/particles.min.js"></script>
+<script src="data/comp/particulas.js"></script>
+
+</body>
+</html>
