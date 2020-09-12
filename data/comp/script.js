@@ -3,6 +3,7 @@ function loadSetts(){
   var pass = localStorage.spbpass;
   var nameuser = localStorage.spbname;
   var mode = localStorage.spbmode;
+  var coli = localStorage.spbcoli;
   var history = localStorage.spbhistory;
   var bg = localStorage.spbbg;
   var zoom = localStorage.spbzoom;
@@ -16,23 +17,22 @@ function loadSetts(){
   document.body.style.zoom = zoom;
   document.getElementById('startup').style.display = welcome;
   document.getElementById('bar-search').focus();
-  document.getElementById('li-mode').value = "dark";
   document.getElementById('fr-name').value = nameuser;
   document.getElementById('op-name').value = nameuser;
   document.getElementById('li-mode').value = mode;
+  document.getElementById('li-colic').value = coli;
   document.getElementById('li-zoom').value = zoom;
   document.getElementById('op-email').value = email;
   document.getElementById('history').innerHTML = history;
   document.getElementById('im-user').src = profile64;
   loadMode();
+  loadColicon();
   verifyHistory();
   verifyBg();
   verifyProv();
   loadPart();
   rndSug();
   document.getElementById('t-license').innerHTML = tlicense;
-  document.getElementById('t-terms').innerHTML = tterms;
-  document.getElementById('t-privacy').innerHTML = tprivacy;
   document.getElementById('ra-co1').value = acril1;
   document.getElementById('ra-co2').value = acril2;
   document.getElementById('ra-co3').value = acril3;
@@ -55,7 +55,8 @@ function startCounter(){
       localStorage.spbemail = "";
       localStorage.spbzoom = "1";
       localStorage.spbhistory = "";
-      localStorage.spbmode = "dark";
+      localStorage.spbmode = "rgba(0,0,0,0.4)";
+      localStorage.spbcoli = "white";
       localStorage.spbbg = "auto";
       localStorage.spbzoom = "1";
       localStorage.spbprov = "g";
@@ -378,27 +379,13 @@ function loadWallpaper(){
 
 function loadMode(){
   var mode = localStorage.spbmode;
-  var dark = "dark";
-  if(mode == dark){
-    document.getElementById('content').style.background = "rgba(0,0,0,0.4)";
-    document.getElementById('signal').style.color = "white";
-    document.getElementById('clock').style.color = "white";
-    document.getElementById('tx-info').style.color = "white";
-    document.getElementById('bar-search').style.color = "white";
-    document.getElementById('ic-menu').style.color = "white";
-    document.getElementById('app-0').style.color = "white";
-    document.getElementById('app-1').style.color = "white";
-    document.getElementById('app-2').style.color = "white";
-    document.getElementById('app-3').style.color = "white";
-    document.getElementById('app-4').style.color = "white";
-    document.getElementById('app-5').style.color = "white";
-    document.getElementById('ic-vend1').style.filter = "invert(0)";
-    document.getElementById('ic-vend2').style.filter = "invert(0)";
-    document.getElementById('ic-vend3').style.filter = "invert(0)";
-    document.getElementById('ic-vend4').style.filter = "invert(0)";
-  }
-  else{
-    document.getElementById('content').style.background = "rgba(255,255,255,0.2)";
+  document.getElementById('content').style.background = mode;
+}
+
+function loadColicon(){
+  var coli = localStorage.spbcoli;
+  var black = "black";
+  if(coli == black){
     document.getElementById('signal').style.color = "black";
     document.getElementById('clock').style.color = "black";
     document.getElementById('tx-info').style.color = "black";
@@ -414,6 +401,23 @@ function loadMode(){
     document.getElementById('ic-vend2').style.filter = "invert(3)";
     document.getElementById('ic-vend3').style.filter = "invert(3)";
     document.getElementById('ic-vend4').style.filter = "invert(3)";
+  }
+  else{
+    document.getElementById('signal').style.color = "white";
+    document.getElementById('clock').style.color = "white";
+    document.getElementById('tx-info').style.color = "white";
+    document.getElementById('bar-search').style.color = "white";
+    document.getElementById('ic-menu').style.color = "white";
+    document.getElementById('app-0').style.color = "white";
+    document.getElementById('app-1').style.color = "white";
+    document.getElementById('app-2').style.color = "white";
+    document.getElementById('app-3').style.color = "white";
+    document.getElementById('app-4').style.color = "white";
+    document.getElementById('app-5').style.color = "white";
+    document.getElementById('ic-vend1').style.filter = "invert(0)";
+    document.getElementById('ic-vend2').style.filter = "invert(0)";
+    document.getElementById('ic-vend3').style.filter = "invert(0)";
+    document.getElementById('ic-vend4').style.filter = "invert(0)";
   }
 }
 
@@ -802,42 +806,8 @@ function openLicense(){
   document.getElementById('sc-particles').style.zIndex = "0";
   document.getElementById('sc-acrilic').style.display = "none";
   document.getElementById('sc-acrilic').style.zIndex = "0";
-  document.getElementById('sc-terms').style.display = "none";
-  document.getElementById('sc-terms').style.zIndex = "0";
-  document.getElementById('sc-privacy').style.display = "none";
-  document.getElementById('sc-privacy').style.zIndex = "0";
   document.getElementById('sc-license').style.display = "block";
   document.getElementById('sc-license').style.zIndex = "3";
-  document.getElementById('pa-mn').style.transform = "translateX(-50%)";
-  document.getElementById('ic-back').style.transform = "scale(1)";
-}
-
-function openTerms(){
-  document.getElementById('sc-particles').style.display = "none";
-  document.getElementById('sc-particles').style.zIndex = "0";
-  document.getElementById('sc-acrilic').style.display = "none";
-  document.getElementById('sc-acrilic').style.zIndex = "0";
-  document.getElementById('sc-terms').style.display = "block";
-  document.getElementById('sc-terms').style.zIndex = "3";
-  document.getElementById('sc-privacy').style.display = "none";
-  document.getElementById('sc-privacy').style.zIndex = "0";
-  document.getElementById('sc-license').style.display = "none";
-  document.getElementById('sc-license').style.zIndex = "0";
-  document.getElementById('pa-mn').style.transform = "translateX(-50%)";
-  document.getElementById('ic-back').style.transform = "scale(1)";
-}
-
-function openPrivacy(){
-  document.getElementById('sc-particles').style.display = "none";
-  document.getElementById('sc-particles').style.zIndex = "0";
-  document.getElementById('sc-acrilic').style.display = "none";
-  document.getElementById('sc-acrilic').style.zIndex = "0";
-  document.getElementById('sc-terms').style.display = "none";
-  document.getElementById('sc-terms').style.zIndex = "0";
-  document.getElementById('sc-privacy').style.display = "block";
-  document.getElementById('sc-privacy').style.zIndex = "3";
-  document.getElementById('sc-license').style.display = "none";
-  document.getElementById('sc-license').style.zIndex = "0";
   document.getElementById('pa-mn').style.transform = "translateX(-50%)";
   document.getElementById('ic-back').style.transform = "scale(1)";
 }
@@ -847,10 +817,6 @@ function openAcrilic(){
   document.getElementById('sc-particles').style.zIndex = "0";
   document.getElementById('sc-acrilic').style.display = "block";
   document.getElementById('sc-acrilic').style.zIndex = "3";
-  document.getElementById('sc-terms').style.display = "none";
-  document.getElementById('sc-terms').style.zIndex = "0";
-  document.getElementById('sc-privacy').style.display = "none";
-  document.getElementById('sc-privacy').style.zIndex = "0";
   document.getElementById('sc-license').style.display = "none";
   document.getElementById('sc-license').style.zIndex = "0";
   document.getElementById('pa-mn').style.transform = "translateX(-50%)";
@@ -862,10 +828,6 @@ function openParticles(){
   document.getElementById('sc-particles').style.zIndex = "3";
   document.getElementById('sc-acrilic').style.display = "none";
   document.getElementById('sc-acrilic').style.zIndex = "0";
-  document.getElementById('sc-terms').style.display = "none";
-  document.getElementById('sc-terms').style.zIndex = "0";
-  document.getElementById('sc-privacy').style.display = "none";
-  document.getElementById('sc-privacy').style.zIndex = "0";
   document.getElementById('sc-license').style.display = "none";
   document.getElementById('sc-license').style.zIndex = "0";
   document.getElementById('pa-mn').style.transform = "translateX(-50%)";
@@ -874,28 +836,14 @@ function openParticles(){
 
 function changeMode(){
   var mode = document.getElementById('li-mode').value;
-  var dark = "dark";
-  if(mode == dark){
-    document.getElementById('content').style.background = "rgba(0,0,0,0.4)";
-    document.getElementById('signal').style.color = "white";
-    document.getElementById('clock').style.color = "white";
-    document.getElementById('tx-info').style.color = "white";
-    document.getElementById('bar-search').style.color = "white";
-    document.getElementById('ic-menu').style.color = "white";
-    document.getElementById('app-0').style.color = "white";
-    document.getElementById('app-1').style.color = "white";
-    document.getElementById('app-2').style.color = "white";
-    document.getElementById('app-3').style.color = "white";
-    document.getElementById('app-4').style.color = "white";
-    document.getElementById('app-5').style.color = "white";
-    document.getElementById('ic-vend1').style.filter = "invert(0)";
-    document.getElementById('ic-vend2').style.filter = "invert(0)";
-    document.getElementById('ic-vend3').style.filter = "invert(0)";
-    document.getElementById('ic-vend4').style.filter = "invert(0)";
-    localStorage.spbmode = mode;
-  }
-  else{
-    document.getElementById('content').style.background = "rgba(255,255,255,0.2)";
+  document.getElementById('content').style.background = mode;
+  localStorage.spbmode = mode;
+}
+
+function changeColicon(){
+  var coli = document.getElementById('li-colic').value;
+  var black = "black";
+  if(coli == black){
     document.getElementById('signal').style.color = "black";
     document.getElementById('clock').style.color = "black";
     document.getElementById('tx-info').style.color = "black";
@@ -911,7 +859,25 @@ function changeMode(){
     document.getElementById('ic-vend2').style.filter = "invert(3)";
     document.getElementById('ic-vend3').style.filter = "invert(3)";
     document.getElementById('ic-vend4').style.filter = "invert(3)";
-    localStorage.spbmode = mode;
+    localStorage.spbcoli = coli;
+  }
+  else{
+    document.getElementById('signal').style.color = "white";
+    document.getElementById('clock').style.color = "white";
+    document.getElementById('tx-info').style.color = "white";
+    document.getElementById('bar-search').style.color = "white";
+    document.getElementById('ic-menu').style.color = "white";
+    document.getElementById('app-0').style.color = "white";
+    document.getElementById('app-1').style.color = "white";
+    document.getElementById('app-2').style.color = "white";
+    document.getElementById('app-3').style.color = "white";
+    document.getElementById('app-4').style.color = "white";
+    document.getElementById('app-5').style.color = "white";
+    document.getElementById('ic-vend1').style.filter = "invert(0)";
+    document.getElementById('ic-vend2').style.filter = "invert(0)";
+    document.getElementById('ic-vend3').style.filter = "invert(0)";
+    document.getElementById('ic-vend4').style.filter = "invert(0)";
+    localStorage.spbcoli = coli;
   }
 }
 
@@ -980,7 +946,8 @@ function resetAll(){
     localStorage.spbemail = "";
     localStorage.spbzoom = "1";
     localStorage.spbhistory = "";
-    localStorage.spbmode = "dark";
+    localStorage.spbmode = "rgba(0,0,0,0.4)";
+    localStorage.spbcoli = "white";
     localStorage.spbbg = "auto";
     localStorage.spbzoom = "1";
     localStorage.spbprov = "g";
@@ -1065,17 +1032,17 @@ function changeProv(){
 }
 
 function openProve(){
-  var mode = localStorage.spbmode;
-  var dark = "dark";
-  if(mode == dark){
+  var coli = localStorage.spbcoli;
+  var black = "black";
+  if(coli == black){
     document.getElementById('v-mapa').style.top = "0px";
     document.getElementById('dv-vendor').style.height = "260px";
-    document.getElementById('dv-vendor').style.background = "rgba(0,0,0,1)";
+    document.getElementById('dv-vendor').style.background = "rgba(255,255,255,1)";
   }
   else{
     document.getElementById('v-mapa').style.top = "0px";
     document.getElementById('dv-vendor').style.height = "260px";
-    document.getElementById('dv-vendor').style.background = "rgba(255,255,255,1)";
+    document.getElementById('dv-vendor').style.background = "rgba(0,0,0,1)";
   }
 }
 

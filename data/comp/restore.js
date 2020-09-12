@@ -18,12 +18,13 @@ function writeData(){
   var q = "qz='" +localStorage.spbcolor2 +"'; ";
   var r = "rz='" +localStorage.spbprov +"'; ";
   var s = "sz='" +localStorage.spbhistory +"'; ";
+  var t = "tz='" +localStorage.spbcoli +"'; ";
 
   var utc = new Date().toJSON().slice(0,10);
   var fec = new Date();
   var cad = fec.getHours()+"-"+fec.getMinutes();
 
-  var textToWrite = (a +b +c +d +e +f +g +h +i +j +k +l +m +n +o +p +q +r +s);
+  var textToWrite = (a +b +c +d +e +f +g +h +i +j +k +l +m +n +o +p +q +r +s +t);
   var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
   var fileNameToSaveAs = "copia_de_seguridad_" +utc +"_" +cad +".ssc";
   var downloadLink = document.createElement("a");
@@ -60,4 +61,5 @@ function importcs(){
   localStorage.spbcolor2 = qz;
   localStorage.spbprov = rz;
   localStorage.spbhistory = sz;
+  localStorage.spbcoli = tz;
 }

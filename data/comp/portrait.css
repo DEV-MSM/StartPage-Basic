@@ -289,16 +289,6 @@
 		left: 50%;
 		z-index: 0;
 	}
-	#sc-terms{
-		display: none;
-		left: 50%;
-		z-index: 0;
-	}
-	#sc-privacy{
-		display: none;
-		left: 50%;
-		z-index: 0;
-	}
 	#sc-acrilic{
 		display: none;
 		left: 50%;
@@ -553,11 +543,11 @@
 	}
 	#tt-9:before{
 		font-family: "Fontello";
-		content: "\e829";
+		content: "\f109";
 	}
 	#tt-9:after{
 		font-family: "Roboto";
-		content: "Licencia";
+		content: "Documentación";
 		margin-left: 10px;
 	}
 	#tt-10:before{

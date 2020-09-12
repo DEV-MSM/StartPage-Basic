@@ -6,7 +6,7 @@
 <link rel="icon" type="image/png" href="data/res/favicon.png" />
 <meta name="author" content="Manuel Serrano Martínez">
 <meta name="description" content="StartPage Basic.">
-<meta name="version" content="4.2">
+<meta name="version" content="4.3">
 <meta content="width=device-width, user-scalable=no" name="viewport" />
 <script src="data/comp/script.js"></script>
 <script src="data/comp/restore.js"></script>
@@ -113,10 +113,21 @@ document.onclick=reEnable
 		<div class="m-section" id="sc-custom">
 			<p class="tt-mn" id="tt-3"></p>
 			<p class="tx-small">Personaliza StartPage con colores, imágenes y temas.</p>
-			<p class="tx-normal">•Modo de color:</p>
+			<p class="tx-normal">•Color de énfasis:</p>
+			<p class="tx-peq" id="text-cauto">Primario</p>
+			<input type="color" value="" class="op-li" id="col-1" onChange="changeColor()">
+			<p class="tx-peq" id="text-col">Secundario</p>
+			<input type="color" value="" class="op-li" id="col-2" onChange="changeColor()">
+			<p class="tx-normal">•Color de íconos:</p>
+			<select class="op-li" id="li-colic" onChange="changeColicon()">
+				<option value="white" class="el-li">Blanco</option>
+				<option value="black" class="el-li">Negro</option>
+			</select>
+			<p class="tx-normal">•Capa de fondo:</p>
 			<select class="op-li" id="li-mode" onChange="changeMode()">
-				<option value="light" class="el-li">Claro</option>
-				<option value="dark" class="el-li">Oscuro</option>
+				<option value="rgba(0,0,0,0)" class="el-li">Ninguna</option>
+				<option value="rgba(255,255,255,0.2)" class="el-li">Clara</option>
+				<option value="rgba(0,0,0,0.4)" class="el-li">Oscura</option>
 			</select>
 			<p class="tx-normal">•Fondo de pantalla:</p>
 			<select class="op-li" id="li-bg" onChange="changeBg()">
@@ -126,11 +137,6 @@ document.onclick=reEnable
 			<p class="tx-peq" id="text-bauto">Selecciona un archivo o agrega la URL de una imagen</p>
 			<button class="op-li" id="ftl" onClick="selImagebg()">Seleccionar archivo</button><br>
 			<input type="text" class="op-tx" id="op-tx" value="" placeholder="URL de imagen" onChange="setWallpaper()">
-			<p class="tx-normal">•Color de énfasis:</p>
-			<p class="tx-peq" id="text-cauto">Primario</p>
-			<input type="color" value="" class="op-li" id="col-1" onChange="changeColor()">
-			<p class="tx-peq" id="text-col">Secundario</p>
-			<input type="color" value="" class="op-li" id="col-2" onChange="changeColor()">
 			<p class="tx-normal">•Tamaño de imagen:</p>
 			<select class="op-li" id="li-sz" onChange="changeSize()">
 				<option value="auto" class="el-li">Automático</option>
@@ -144,7 +150,7 @@ document.onclick=reEnable
 		</div>
 		<div class="m-section" id="sc-acrilic">
 			<p class="tt-mn" id="tt-12"></p>
-			<p class="tx-peq">Versión: 2.0.0<br>Desarrollador: MSM Apps</p>
+			<p class="tx-peq">Versión: 2.0.0<br>Desarrollador: DEV-MSM</p>
 			<p class="tx-peq">Este modo de diseño cambia el aspecto del acento de color mediante efectos de transparencia y desenfoque.<br>
 			El color se mide en formato RGB, por lo que el primer valor pertenece al color rojo, el segundo al verde y el tercero al azul.</p>
 			<p class="tx-peq" style="text-align: center;">Rojo</p>
@@ -182,9 +188,9 @@ document.onclick=reEnable
 			<input type="text" class="op-tx" id="op-name" value="" name="user" placeholder="Nombre de usuario" onChange="changeName2()"><br>
 			<p class="tx-peq">Correo electrónico:<p>
 			<input type="text" class="op-tx" id="op-email" value="" name="email" placeholder="Correo electrónico" onChange="changeEmail()"><br>
-			<p class="tx-normal">•Región e idioma:</p>
+			<p class="tx-normal">•Idioma:</p>
 			<select class="op-li" id="li-zone">
-				<option value="es-mx" class="el-li">México (Español)</option>
+				<option value="es-mx" class="el-li">Español (LAT)</option>
 			</select>
 			<p class="tx-normal">•Accesibilidad:</p>
 			<p class="tx-peq">Tamaño de los elementos:<p>
@@ -256,13 +262,17 @@ document.onclick=reEnable
 			por defecto de tu navegador para mejorar la experiencia y personalización al momento de 
 			navegar por la web.</p>
 			<p class="tx-normal">•General</p>
-			<p class="tx-peq">StartPage Basic<br>v4.2<br>MSM Apps<br>Región: ES-MX<br>Fecha: 10-Jun-2020</p>
+			<p class="tx-peq">StartPage Basic<br>v4.3<br>DEV-MSM<br>Idioma: Español LAT<br>Fecha: 12-Sep-2020</p>
 			<p class="tx-normal">•Características:</p>
 			<p class="tx-peq">Esta edición de StartPage funciona con el formato web HTML5, reduciendo 
 			el uso de memoria RAM, pero con el mismo nivel de personalización. Está programada para 
 			funcionar con dispositivos de pocos recursos de hardware, acelerando la navegación.<br>
-		    Para obtener todas las funciones de StartPage, instala la versión completa.</p>
+		    Para obtener todas las funciones de StartPage, descarga la versión completa actual (v6.5).</p>
 			<p class="tx-normal">•Novedades:</p>
+			<p class="tx-peq">Versión 4.3<br>
+				1. StartPage Basic ahora está disponible en Github.<br>
+				2. La capa de fondo y el color de íconos ahora son configuraciones individuales.<br>
+			    3. Se actualizó la documentación.</p>
 			<p class="tx-peq">Versión 4.2<br>
 				1. Ahora puedes crear y restaurar copias de seguridad de tu configuración.<br>
 			    2. Mejoras en accesibilidad.<br>
@@ -271,7 +281,7 @@ document.onclick=reEnable
 			<p class="tx-peq">Versión 4.1<br>
 				1. Ahora puedes hacer búsquedas fácilmente desde tu historial.<br>
 			    2. Después de hacer una búsqueda, automáticamente se elimina para evitar conflictos con futuras búsquedas.</p>
-			<p class="tx-peq">Presentamos la nueva versión 4.0 de StartPage Basic con nuevas caracterísitcas y mejoras.<br>
+			<p class="tx-peq">StartPage Basic versión 4.0<br>
 				1. Nuevo código escrito desde cero.<br>
 			    2. Ahora puedes personalizar StartPage con tu imagen y colores favoritos.<br>
 			    3. Obtén un mejor rendimiento cuando vayas a navegar.<br>
@@ -297,9 +307,7 @@ document.onclick=reEnable
 			<button class="op-li" onClick="openComp3()" title="Web: https://github.com/wayou/t-rex-runner">T-Rex</button><br>
 			<p class="tx-peq">Desarrollador: Wayou Liu</p>
 			<p class="tx-normal">•Documentación:</p>
-			<button class="op-li" id="bt-license" onClick="openLicense()">Licencia</button>
-			<button class="op-li" id="bt-terms" onClick="openTerms()">Términos y condiciones</button>
-			<button class="op-li" id="bt-privacy" onClick="openPrivacy()">Política de privacidad</button>
+			<button class="op-li" id="bt-license" onClick="openLicense()">Abrir documentación</button>
 			<p class="tx-normal">•Soporte:</p>
 			<p class="tx-peq">Las actualizaciones están activas.</p>
 			<input type="text" style="display: none; visibility: hidden;" value="0px" id="vsensor">
@@ -313,19 +321,9 @@ document.onclick=reEnable
 			<p class="tx-small" id="t-license"></p>
 			<br>
 		</div>
-		<div class="m-section" id="sc-terms">
-			<p class="tt-mn" id="tt-10"></p>
-			<p class="tx-small" id="t-terms"></p>
-			<br>
-		</div>
-		<div class="m-section" id="sc-privacy">
-			<p class="tt-mn" id="tt-11"></p>
-			<p class="tx-small" id="t-privacy"></p>
-			<br>
-		</div>
 	</div>
 	<div class="sc-controls" id="sc-controls">
-		<p class="tx-mn" id="tx-mn">StartPage Basic v4.2</p><img src="data/res/ic-back.png" class="ic-back" id="ic-back" accesskey="z" onClick="retro()" title="Atrás [Tecla de acceso: Z]">
+		<p class="tx-mn" id="tx-mn">StartPage Basic v4.3</p><img src="data/res/ic-back.png" class="ic-back" id="ic-back" accesskey="z" onClick="retro()" title="Atrás [Tecla de acceso: Z]">
 	</div>
 </div>
 
