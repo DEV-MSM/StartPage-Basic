@@ -11,7 +11,7 @@ It is compatible with Webkit-based browsers, such as: Chrome, Opera, Edge Chromi
   3. StartPage Basic incorporates other open source projects and resources available on Github.
   
 ## Screenshots
-<img src="data/ss/01.png" width="500px">
-<img src="data/ss/02.png" width="500px">
-<img src="data/ss/03.png" width="300px">
-<img src="data/ss/04.png" width="300px">
+<img src="https://github.com/DEV-MSM/StartPage-Basic/master/data/ss/01.png" width="500px">
+<img src="https://github.com/DEV-MSM/StartPage-Basic/master/data/ss/02.png" width="500px">
+<img src="https://github.com/DEV-MSM/StartPage-Basic/master/data/ss/03.png" width="300px">
+<img src="https://github.com/DEV-MSM/StartPage-Basic/master/data/ss/04.png" width="300px">
