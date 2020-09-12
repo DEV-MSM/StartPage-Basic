@@ -9,3 +9,6 @@ It is compatible with Webkit-based browsers, such as: Chrome, Opera, Edge Chromi
   1. Current available language: Spanish (LAT).
   2. Operation via localStorage.
   3. StartPage Basic incorporates other open source projects and resources available on Github.
+
+## Screenshot
+<img src="https://i.ibb.co/9GJLc70/01.png" border="0">
